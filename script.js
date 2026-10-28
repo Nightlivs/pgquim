@@ -1,3 +1,4 @@
+//ACORDEÃO (ABRIR E FECHAR CONTEÚDOS)
 document.querySelectorAll(".titulo-acordeao").forEach(botao => {
     botao.addEventListener("click", () => {
         let conteudo = botao.nextElementSibling; //pegue o próximo elemento
@@ -9,8 +10,17 @@ document.querySelectorAll(".titulo-acordeao").forEach(botao => {
     });
 });
 
+//BOTÕES
+function mostrarConteudo(id) {
+    let conteudo = document.getElementById(id);
+    let estavaAberto = conteudo.style.display === "block";
 
+    // Fecha todos os blocos de guerra em uma linha
+    document.querySelectorAll(".conteudo").forEach(bloco => bloco.style.display = "none");
 
+    // Só reabre se ele já não estivesse aberto antes
+    if (!estavaAberto) conteudo.style.display = "block";
+}
 
 //QUIZ (DADOS E LÓGICA)
 const perguntas = [
@@ -152,10 +162,6 @@ function refazerQuiz() {
     mostrarPergunta();
 }
 
-// Inicialização automática do Quiz
-if (document.getElementById("quiz-container")) {
-    mostrarPergunta();
-}
 // Inicialização automática do Quiz
 if (document.getElementById("quiz-container")) {
     mostrarPergunta();
